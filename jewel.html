@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+   <title>Jewel</title>
+
+   <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="assets/js/bootstrap.min.js"></script>
+
+
+	<style type="text/css">
+		.list {
+			display:inline-block;
+			padding-right: 20px;
+    		font-size: 27px;
+
+		}
+
+    body {
+      background-image: url('assets/images/background.jpg');
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+
+     #ruby {
+      background-image: url('assets/images/ruby.png');
+      width: 100px;
+      height: 100px;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    #emerald {
+      background-image: url('assets/images/emerald.png');
+      width: 100px;
+      height: 100px;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    #saphire {
+      background-image: url('assets/images/saphire.png');
+      width: 100px;
+      height: 100px;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    #diamond {
+      background-image: url('assets/images/diamond.png');
+      width: 100px;
+      height: 100px;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+	</style>
+</head>
+<body>
+
+
+    <div class="container theme-showcase" role="main">
+      <div class="col-md-6" style="background-color:rgba(255,255,255,.5); margin-top: 14%;">
+      </div><!--/col-md-6-->
+
+      <div class="col-md-6" style="background-color:rgba(255,255,255,0.5); margin-top:14%;">
+            <div class="row">
+        <div class="col-md-3">
+          <div class="run" id="ruby">  </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="run" id="emerald"></div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="run" id="diamond"></div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="run" id="saphire"></div>
+        </div>
+      </div><!--/row-->
+
+
+        <div class="row">
+        <div class="col_md_12">
+          <h3 style="float: left; display: -webkit-inline-box;">GUESS: </h3>
+          <div class="generate" id="guessNumber" style="float:left; display: inline-block; font-size: 30px; margin-top: 10px;"></div>
+        </div>
+        </div>
+
+        <div class="row">
+
+          <div class="reset" id="score"></div>
+          <div class="col-md-4" style="background-color:rgba(255,255,0,0.5);">
+            <h3 style="float: left; display: -webkit-inline-box;">Total:</h3>
+            <div class="reset" id="totalScore" style="float:left; display: inline-block; font-size: 30px; margin-top: 10px;"></div>
+          </div>
+
+          <div class="col-md-4" style="background-color:rgba(0,255,0,0.5);">
+            <h3 style="float: left; display: -webkit-inline-box;">Wins:</h3>
+            <div id="wins" style="float:left; display: inline-block; font-size: 30px; margin-top: 10px;"></div>
+          </div>
+          
+          <div class="col-md-4" style="background-color:rgba(255,0,0,0.5);">
+            <h3 style="float: left; display: -webkit-inline-box;">Losses:</h3>
+            <div id="losses" style="float:left; display: inline-block; font-size: 30px; margin-top: 10px;"></div>
+          </div>
+      </div>
+
+      </div><!--/col-md-6-->
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    
+
+
+    </div> <!-- /container -->
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+  var wins = 1;
+  var losses = 1; 
+  var guessNumber; 
+  var gems;
+  var emerald;
+  var diamond;
+  var saphire;
+  var totalScore = 0; 
+  var scoresGenerated = [];
+  var score = [];
+  var clicks = 0; 
+
+  function play(){
+    guessNumber = Math.floor((Math.random() * 120) + 19);
+
+    $('#guessNumber').html(guessNumber);
+
+    console.log("Number to Guess");
+    console.log(guessNumber);
+
+    $('.run').click(function (){
+    gems = Math.floor((Math.random() * 12) + 1);
+    score.push(gems);
+
+    for (var i in score) {
+      totalScore += score[i];
+    }
+
+
+    check();
+
+    console.log(clicks);
+
+    console.log('score-------');
+    console.log(score);
+
+    console.log('totalScore-----');
+    console.log(totalScore);
+    $('#totalScore').html(totalScore);
+
+    console.log("guessNumber------");
+    console.log(guessNumber);
+
+
+
+  });
+
+
+
+ } 
+
+
+
+  function check(){
+     
+        if (totalScore > guessNumber) {
+            console.log("lose");
+            losses = losses++;
+            $('#losses').html(losses);
+            reset();
+            play();
+            
+        } else if (totalScore === guessNumber) {
+            console.log("win");
+            wins = wins++;
+            $('#wins').html(wins);
+            reset();
+            play();
+        }
+     
+  }
+
+  function reset(){
+    //$( "div" ).remove( ".reset" );
+    totalScore = 0; 
+    console.log("this is the totalScore reset---------");
+    console.log(totalScore);
+    console.log("this is the score");
+    console.log(score);
+
+
+    for (var i = 0; i < score.length; i++){
+      score[i] = 0;
+      console.log(score);
+    }
+      console.log("reset push");
+      console.log(score);
+
+
+
+
+  }
+  play();
+
+
+
+});
+
+
+</script>
+
+
+
+
+	<script>
+
+
+
+
+ // var print =  $('#score').html();
+ // console.log("print");
+ // console.log(print);
+ //  for(var i = 0; i < score.length; i++){
+ //   totalScore += score[i] << 0;
+ //   console.log("totalScore");
+ //   console.log(totalScore);
+ //  } 
+
+//  }
+ //   addScore();
+</script>
+
+
+</body>
+
+</html>
