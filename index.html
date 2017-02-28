@@ -207,6 +207,7 @@ $(document).ready(function(){
             losses = losses++;
             $('#losses').html(losses);
             reset();
+            $('#losses').html(losses++);
             
         } else if (totalScore === guessNumber) {
             console.log("win");
@@ -219,9 +220,12 @@ $(document).ready(function(){
 
   function reset(){
     //$( "div" ).remove( ".reset" );
-    totalScore = 0; 
     guessNumber = Math.floor((Math.random() * 120) + 19);
     $('#guessNumber').html(guessNumber);
+
+    totalScore = 0; 
+
+
     console.log("this is the totalScore reset---------");
     console.log(totalScore);
     console.log("this is the score");
@@ -236,6 +240,11 @@ $(document).ready(function(){
       console.log(score);
 
 
+      var zero = 0; 
+      score.push(zero);
+
+
+    console.log(totalScore);
 
 
   }
